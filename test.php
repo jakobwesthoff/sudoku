@@ -13,7 +13,7 @@ $sudoku_field[6] = array(4,0,1,6,0,2,0,7,0);
 $sudoku_field[7] = array(8,9,0,0,0,1,0,0,0);
 $sudoku_field[8] = array(0,6,0,5,3,0,0,0,0);
 
-var_dump($s->solve($sudoku_field));
+$s->solve($sudoku_field);
 
 for ($i=0; $i<9; $i++) {
     echo implode(',', $s->grid[$i]), "\n";
@@ -42,30 +42,5 @@ for ($i=0; $i<9; $i++) {
 }
 
 echo ($solved_correct ? "Test passed." : "!!! Test failed !!!"), "\n";
-
-echo "solving 10000 times:\n";
-$passed = true;
-
-for ($i=0;$i<10000; $i++) {
-if (!$s->solve($sudoku_field)) {
-    echo "error!\n";
-    die;
-}
-echo "solved: $i\n";
-/*$solved_correct = true;
-
-for ($j=0; $j<9; $j++) {
-    for ($k=0; $k<9; $k++) {
-        if ($s->grid[$j][$k] !== $solution[$j][$k]) {
-            $solved_correct = false;
-            break 2;
-        }
-    }
-}
-if (!$solved_correct) {
-    echo "wrong!\n";
-    die;
-}*/
-}
 
 ?>
